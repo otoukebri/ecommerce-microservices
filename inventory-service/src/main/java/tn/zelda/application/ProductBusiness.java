@@ -4,9 +4,8 @@ import tn.zelda.domain.Product;
 
 import java.util.List;
 
-/**
- * Created by zelda on 31/01/17.
- */
-public interface ProductService {
+
+
+public interface ProductBusiness {
     List<Product> getProducts();
 }

@@ -3,17 +3,18 @@
 e-commerce-microserices-application is a showcase microservice java application implemented using:
 
 ## Technical Stack
-* SpringBoot
-* Spring REST
-* Spring Cloud
-* Angular
-* TypeScript
-* Prime-ng
-* RabbitMq
 * TDD
 * DDD
 * Docker
-* Aws
+* AWS
+* RabbitMq
+* SpringBoot
+* Spring REST
+* Spring Cloud
+* Lombok
+* Angular
+* TypeScript
+* Prime-ng
 
 ## This showcase application is composed from several modules
 * Client management module
