@@ -1,57 +1,83 @@
 package tn.zelda.domain;
 
-import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import java.util.Objects;
 
-@Table(name = "products")
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Product implements Serializable {
-
+@Document(indexName = "product", type = "product")
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
-
-    @NotNull
-    @Column(name = "code")
+    private long id;
     private String code;
-
-
-    @Column(name = "label")
-    private String label;
-
-    @NotNull
-    @Column(name = "price")
+    private String lable;
     private float price;
+    private String description;
 
+    public Product() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getLable() {
+        return lable;
+    }
+
+    public void setLable(String lable) {
+        this.lable = lable;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hash(id);
     }
-
 
     @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Product)) {
-            return false;
-        }
-        final Product other = (Product) obj;
-        if (id != null) {
-            if (!id.equals(other.id)) {
-                return false;
-            }
-        }
-        return true;
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", lable='" + lable + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                '}';
     }
-
 }
