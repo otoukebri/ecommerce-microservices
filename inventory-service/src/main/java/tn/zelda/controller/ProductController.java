@@ -30,8 +30,8 @@ public class ProductController {
         productRepository.save(product);
     }
 
-    @DeleteMapping
-    public void delete(Long id) {
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
         productRepository.deleteById(id);
     }
 
