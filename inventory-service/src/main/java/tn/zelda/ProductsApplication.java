@@ -39,6 +39,7 @@ public class ProductsApplication {
 
     @Autowired
     ElasticsearchTemplate template;
+
     @Autowired
     TaskExecutor taskExecutor;
 

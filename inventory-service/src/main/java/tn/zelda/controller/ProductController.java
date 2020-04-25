@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.zelda.domain.Product;
 import tn.zelda.repository.ProductRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -13,6 +14,9 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    tn.zelda.repository.CustomProductRepository CustomProductRepository;
 
     @GetMapping
     public Iterable<Product> getAll() {
@@ -33,6 +37,11 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         productRepository.deleteById(id);
+    }
+
+    @PostMapping("/search")
+    public List<Product> search(@RequestBody Product product) {
+        return CustomProductRepository.search(product);
     }
 
 }
